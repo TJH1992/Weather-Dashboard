@@ -11,7 +11,7 @@ SO THAT I can plan a trip accordingly
 * Test
 * License
 ## Description
-The main goals for this project was to use the moment.js API to develop a work day scheduler. 
+The main goals for this project was to use the open weather API to develop a weather app. 
 ## Installation
 * Clone the GitHub repository to your machine.
 * Right click the file index.html and select the "open with live server" option.
