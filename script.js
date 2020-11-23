@@ -34,71 +34,71 @@ function currentWeather(){
   
   
   
-  var fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?q=San+Diego&appid=" + apiKey;
+  var fiveDayForecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=San+Diego&appid=" + apiKey;
   
   
   $.ajax({
-    url: fiveDayURL,
+    url: fiveDayForecastURL,
     method: "GET"
-  }).then(function(responseTwo) {
+  }).then(function(secondResponse) {
   
-    var icon1 = responseTwo.list[4].weather[0].icon;
-    var icon1url = "http://openweathermap.org/img/w/" + icon1 + ".png";
+    var firstIcon = secondResponse.list[4].weather[0].icon;
+    var firstIconurl = "http://openweathermap.org/img/w/" + firstIcon + ".png";
   
-    var icon2 = responseTwo.list[4].weather[0].icon;
-    var icon2url = "http://openweathermap.org/img/w/" + icon2 + ".png";
+    var secondIcon = secondResponse.list[4].weather[0].icon;
+    var secondIconurl = "http://openweathermap.org/img/w/" + secondIcon + ".png";
   
-    var icon3 = responseTwo.list[4].weather[0].icon;
-    var icon3url = "http://openweathermap.org/img/w/" + icon3 + ".png";
+    var thirdIcon = secondResponse.list[4].weather[0].icon;
+    var thirdIconurl = "http://openweathermap.org/img/w/" + thirdIcon + ".png";
   
-    var icon4 = responseTwo.list[4].weather[0].icon;
-    var icon4url = "http://openweathermap.org/img/w/" + icon4 + ".png";
+    var fourthIcon = secondResponse.list[4].weather[0].icon;
+    var fourthIconurl = "http://openweathermap.org/img/w/" + fourthIcon + ".png";
   
-    var icon5 = responseTwo.list[4].weather[0].icon;
-    var icon5url = "http://openweathermap.org/img/w/" + icon5 + ".png";
+    var fifthIcon = secondResponse.list[4].weather[0].icon;
+    var fifthIconurl = "http://openweathermap.org/img/w/" + fifthIcon + ".png";
   
-    // Converts the temp to Kelvin with the below formula & then sets it to 2 decimal points
-    var tempOneF = (responseTwo.list[4].main.temp - 273.15) * 1.8 + 32;
-    var tempOne = tempOneF.toFixed(1);
-    var tempTwoF = (responseTwo.list[12].main.temp - 273.15) * 1.8 + 32;
-    var tempTwo = tempTwoF.toFixed(1);
-    var tempThreeF = (responseTwo.list[20].main.temp - 273.15) * 1.8 + 32;
-    var tempThree = tempThreeF.toFixed(1);
-    var tempFourF = (responseTwo.list[28].main.temp - 273.15) * 1.8 + 32;
-    var tempFour = tempFourF.toFixed(1);
-    var tempFiveF = (responseTwo.list[36].main.temp - 273.15) * 1.8 + 32;
-    var tempFive = tempFiveF.toFixed(1);
+    // The operations below converts each temp to Kelvin then fixes it to 2 decimal points
+    var firstTempF = (secondResponse.list[4].main.temp - 273.15) * 1.8 + 32;
+    var firstTemp = firstTempF.toFixed(1);
+    var secondTempF = (secondResponse.list[12].main.temp - 273.15) * 1.8 + 32;
+    var secondTemp = secondTempF.toFixed(1);
+    var thirdTempF = (secondResponse.list[20].main.temp - 273.15) * 1.8 + 32;
+    var thirdTemp = thirdTempF.toFixed(1);
+    var fourthTempF = (secondResponse.list[28].main.temp - 273.15) * 1.8 + 32;
+    var fourthTemp = fourthTempF.toFixed(1);
+    var fifthTempF = (secondResponse.list[36].main.temp - 273.15) * 1.8 + 32;
+    var fifthTemp = fifthTempF.toFixed(1);
   
-    var day1 = responseTwo.list[4].dt_txt;
-    var day2 = responseTwo.list[12].dt_txt;
-    var day3 = responseTwo.list[20].dt_txt;
-    var day4 = responseTwo.list[28].dt_txt;
-    var day5 = responseTwo.list[36].dt_txt;
+    var firstDay = secondResponse.list[4].dt_txt;
+    var secondDay = secondResponse.list[12].dt_txt;
+    var thirdDay = secondResponse.list[20].dt_txt;
+    var fourthDay = secondResponse.list[28].dt_txt;
+    var fifthDay = secondResponse.list[36].dt_txt;
   
-    $("#day-1").html("<h5>" + day1.substr(0, 10) + "</h5>");
-    $("#day-1").append("<img src=" + icon1url + ">");
-    $("#day-1").append("<p>" + "Temp: " + tempOne + " °F </p>");
-    $("#day-1").append("<p>" + "Humidity: " + responseTwo.list[4].main.humidity + " % </p>");
+    $("#day-1").html("<h5>" + firstDay.substr(0, 10) + "</h5>");
+    $("#day-1").append("<img src=" + firstIconurl + ">");
+    $("#day-1").append("<p>" + "Temp: " + firstTemp + " °F </p>");
+    $("#day-1").append("<p>" + "Humidity: " + secondResponse.list[4].main.humidity + " % </p>");
   
-    $("#day-2").html("<h5>" + day2.substr(0, 10) + "</h5>");
-    $("#day-2").append("<img src=" + icon2url + ">");
-    $("#day-2").append("<p>" + "Temp: " + tempTwo + " °F </p>");
-    $("#day-2").append("<p>" + "Humidity: " + responseTwo.list[12].main.humidity + " % </p>");
+    $("#day-2").html("<h5>" + secondDay.substr(0, 10) + "</h5>");
+    $("#day-2").append("<img src=" + secondIconurl + ">");
+    $("#day-2").append("<p>" + "Temp: " + secondTemp + " °F </p>");
+    $("#day-2").append("<p>" + "Humidity: " + secondResponse.list[12].main.humidity + " % </p>");
   
-    $("#day-3").html("<h5>" + day3.substr(0, 10) + "</h5>");
-    $("#day-3").append("<img src=" + icon3url + ">");
-    $("#day-3").append("<p>" + "Temp: " + tempThree + " °F </p>");
-    $("#day-3").append("<p>" + "Humidity: " + responseTwo.list[20].main.humidity + " % </p>");
+    $("#day-3").html("<h5>" + thirdDay.substr(0, 10) + "</h5>");
+    $("#day-3").append("<img src=" + thirdIconurl + ">");
+    $("#day-3").append("<p>" + "Temp: " + thirdTemp + " °F </p>");
+    $("#day-3").append("<p>" + "Humidity: " + secondResponse.list[20].main.humidity + " % </p>");
   
-    $("#day-4").html("<h5>" + day4.substr(0, 10) + "</h5>");
-    $("#day-4").append("<img src=" + icon4url + ">");
-    $("#day-4").append("<p>" + "Temp: " + tempFour + " °F </p>");
-    $("#day-4").append("<p>" + "Humidity: " + responseTwo.list[28].main.humidity + " % </p>");
+    $("#day-4").html("<h5>" + fourthDay.substr(0, 10) + "</h5>");
+    $("#day-4").append("<img src=" + fourthIconurl + ">");
+    $("#day-4").append("<p>" + "Temp: " + fourthTemp + " °F </p>");
+    $("#day-4").append("<p>" + "Humidity: " + secondResponse.list[28].main.humidity + " % </p>");
   
-    $("#day-5").html("<h5>" + day5.substr(0, 10) + "</h5>");
-    $("#day-5").append("<img src=" + icon5url + ">");
-    $("#day-5").append("<p>" + "Temp: " + tempFive + " °F </p>");
-    $("#day-5").append("<p>" + "Humidity: " + responseTwo.list[36].main.humidity + " % </p>");
+    $("#day-5").html("<h5>" + fifthDay.substr(0, 10) + "</h5>");
+    $("#day-5").append("<img src=" + fifthIconurl + ">");
+    $("#day-5").append("<p>" + "Temp: " + fifthTemp + " °F </p>");
+    $("#day-5").append("<p>" + "Humidity: " + secondResponse.list[36].main.humidity + " % </p>");
   });
   }
   
